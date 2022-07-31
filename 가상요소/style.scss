@@ -1,0 +1,42 @@
+
+body{
+    display: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.a{
+    position: relative;
+    left: 30%;
+    transform: translateY(100%);
+    border: 1px solid aqua;
+    width: 100px;
+    height: 100px;
+}
+
+
+.a::before{
+    content: " before "; /* content는 ''라도 지정해주어야함*/
+    position: absolute; /*absolute아니면 크기 지정할 수 없음*/
+    left: 0%;
+    border: 1px solid greenyellow;
+    width: 500px;
+    height:  50px;
+    opacity: 0;
+}
+.a::after{
+    content: "  ";
+    position: absolute; /*absolute아니면 크기 지정할 수 없음*/
+    left: 0%;
+    border: 1px solid greenyellow;
+    width: 500px;
+    height:  50px;
+    top: 60%;
+    box-shadow: 450px 40px black;
+    
+    content: " after ";
+}
+
+.a:hover::before{
+    opacity: 1;
+}
