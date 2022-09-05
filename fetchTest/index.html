@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="orderport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="content">
+
+        <div class="nav">
+            <ul>
+                <li id="aa">
+                    <a>
+                        <i class="fa-solid fa-building"></i>
+                        <span class="title">Brand Name</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-people-line"></i>
+                        <span class="title">Customers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <span class="title">Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span class="title">Help</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="title">Setting</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-unlock-keyhole"></i>
+                        <span class="title">Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span class="title">Sign out</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="toggle"></div>
+        </div>
+        <div class="Main"></div>
+    </div>
+    <script>
+        let nav = document.querySelector('.nav');
+        let Main = document.querySelector('.Main');
+        let toggleBtn = document.querySelector('.toggle');
+        let findBox = document.querySelector(".Main .header .findBox input")
+
+        let refreshTest = document.getElementById('aa')
+
+        window.onload = e => {
+            fetch('home.html')
+                .then(response => response.text())
+                .then(text => Main.innerHTML = text);
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            Main.classList.toggle("active");
+        })
+
+        refreshTest.addEventListener('click', ()=>{
+            fetch('homa.html')
+                .then(response => response.text())
+                .then(text => Main.innerHTML = text);
+        })
+    </script>
+</body>
+
+</html>

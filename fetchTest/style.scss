@@ -1,0 +1,471 @@
+$icon-size: 50px;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 400px;
+    background-color: #fff;
+    display: inline;
+    overflow-x: auto;
+    // overflow-x: hidden;
+    // min-width: 600vw;
+}
+
+.nav {
+    position: fixed;
+    background: #4E92BA;
+    inset: 20px;
+    width: 80px;
+    border-left: 10px solid #4E92BA;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 15px 15px 25px rgba($color: #000000, $alpha: 0.25);
+
+    transition: 0.5s;
+
+    .toggle {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+        bottom: 15px;
+        right: 15px;
+        border-radius: 50vh;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // box-shadow: 5px 5px rgba($color: #000000, $alpha: 0.055);
+    }
+
+    .toggle::before {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 5px;
+        background-color: #4E92BA;
+        transform: translateY(-5px);
+        transition: 1s;
+    }
+
+    .toggle::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 5px;
+        background-color: #4E92BA;
+        transform: translateY(5px);
+        transition: 1s;
+    }
+
+    ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        li {
+            position: relative;
+            list-style: none;
+            width: 100%;
+
+            // background: #fff;
+
+
+
+            a {
+                position: relative;
+                // display: block;
+                width: 100%;
+                display: flex;
+                text-decoration: none;
+
+                span {
+                    color: #5B4AB0;
+                }
+
+                i {
+                    position: relative;
+                    // display: block;
+                    min-width: 60px;
+                    height: 60px;
+                    line-height: 70px;
+                    text-align: center;
+
+                    font-size: 1.75em;
+
+                    // transform: translateY(-0.5vh);
+                }
+
+                .title {
+                    position: relative;
+                    // display: block;
+                    // padding: 0 10px;
+                    padding-left: 10px;
+                    // height: 60px;
+                    line-height: 60px;
+                    // text-align: start;
+                    white-space: nowrap;
+                }
+            }
+
+        }
+    }
+
+    ul li:hover {
+        background: #fff;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+
+        a span {
+            color: #5B4AB0;
+        }
+    }
+
+    ul li:hover:not(:first-child) a {
+        color: #574F17;
+    }
+
+    ul li:first-child {
+        top: 20px;
+        margin-bottom: 50px;
+        background: none;
+    }
+}
+
+.nav.active {
+    width: 250px;
+    border-radius: 20px;
+
+    .toggle::before {
+        transform: translateY(0px) rotate(-405deg);
+    }
+
+    .toggle::after {
+        transform: translateY(0px) rotate(225deg);
+    }
+
+}
+
+$x1: 160px;
+
+.Main {
+    position: absolute;
+    width: calc(100% - 160px);
+    left: 140px;
+    min-height: 100vh;
+
+    transition: 0.5s;
+
+
+    .header {
+        // position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 10px;
+        border-bottom: 2.5px solid rgba($color: #000000, $alpha: 0.05);
+        box-shadow: 0px 2.5px rgba($color: #4DF8F8, $alpha: 0.08);
+
+        h2 {
+            order: 1;
+        }
+
+        // min-height: 100vh;
+        .findBox {
+            // position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: 0 10px;
+            order: 2;
+
+            i {
+                // position: relative;
+                cursor: pointer;
+            }
+
+            .search {
+                // position: relative;
+                border: none;
+                border-radius: 50px;
+                margin-right: 10px;
+                height: 25px;
+                min-width: 25%;
+                padding: 0 15px;
+                background: #43B0D9;
+                color: #fff;
+
+                transition: 1s;
+                width: 250px;
+            }
+        }
+
+        .user {
+            // position: relative;
+            order: 3;
+
+            .userImg {
+                position: relative;
+                height: $icon-size;
+                width: $icon-size;
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 5px;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+
+            .userName {
+                margin: 5px;
+                font-size: 0.75em;
+                text-align: center;
+            }
+        }
+    }
+
+    .orderCnts {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // 1fr * 4 = 1:1:1:1
+        gap: 50px;
+
+        .group {
+            position: relative;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 7px 25px rgba($color: #217474, $alpha: 0.08);
+            display: flex;
+            justify-content: space-between;
+
+            .orderName {
+                font-weight: 500;
+                font-size: 1.5em;
+                color: #43B0D9;
+            }
+
+            .orderNumber {
+                color: gray;
+            }
+
+            .ico {
+                position: relative;
+                height: calc($icon-size/2);
+                width: calc($icon-size/2);
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 5px;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .details {
+        $detailBox-height: 500px;
+
+
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr; // 2:1
+        gap: 20px;
+
+        .recentOrders {
+            position: relative;
+            display: grid; // grid의 default는 grid-template-row인듯. 그리고 얘때문에 각 width은 100%로 동일하게 할당됨
+            grid-template-rows: 1fr 5fr; // 세로방향으로 1:5비율
+            border-radius: 25px;
+            height: $detailBox-height;
+            padding: 25px;
+            box-shadow: 0 7px 25px rgba($color: #000000, $alpha: 0.05); // 두깨가 y축 혹은 x축보다 크면, 4방면으로 그림자 효과를 만들 수 있음
+            overflow-y: scroll;
+
+
+            .detailHeader {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 10px;
+
+                .btn {
+                    text-decoration: none;
+                    background: #43B0D9;
+                    padding: 15px;
+                    color: #fff;
+                    border-radius: 10px;
+                }
+            }
+
+            table {
+                // width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px; // 적당히 margin을 주면, border-bottom의 두께도 일정해짐, +그 이상 이하를 주면 이상하게 바뀜
+
+                thead td {
+                    font-weight: 600;
+                }
+
+                tbody tr {
+                    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.25);
+                }
+
+                tr td:not(:first-child) {
+                    text-align: end;
+                }
+
+                tr td:nth-child(2) {
+                    text-align: center;
+                }
+                
+
+                tr:last-child {
+                    border-bottom: none;
+                }
+            
+            
+                tr:hover {
+                    background: #50fc83;
+                    color: #fff;
+                }
+
+
+                .Status {
+                    padding: 2px 4px;
+                    font-size: 14px;
+                    border-radius: 4px;
+                    color: #fff;
+                }
+
+                .Delivered {
+                    background: #71ff9c;
+                }
+
+                .Cooking {
+                    background: #FAF752;
+                }
+
+                .Delivery {
+                    background: #FA1A0B;
+                }
+            }
+        }
+
+        .Ordering {
+            position: relative;
+            display: grid; // grid의 default는 grid-template-row인듯. 그리고 얘때문에 각 width은 100%로 동일하게 할당됨
+            grid-template-rows: 1fr 5fr; // 세로방향으로 1:5비율
+            border-radius: 25px;
+            height: $detailBox-height;
+            padding: 25px;
+            box-shadow: 0 7px 25px rgba($color: #000000, $alpha: 0.05); // 두깨가 y축 혹은 x축보다 크면, 4방면으로 그림자 효과를 만들 수 있음
+            overflow-y: scroll;
+
+
+            .imgBox {
+                $img-size: 70px;
+
+                position: relative;
+                width: $img-size;
+                height: $img-size;
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 10px;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+.Main .header .findBox input::placeholder {
+    color: #fff;
+    display: flex;
+    text-align: center;
+}
+
+.Main .header .findBox .search:focus {
+    width: 100%;
+    text-align: center;
+    outline: none;
+}
+
+.Main .orderCnts .group:hover {
+    background: #43D970;
+    cursor: pointer;
+
+    .orderName {
+        color: #17404e;
+    }
+}
+
+/**/
+.Main .details .recentOrders::-webkit-scrollbar,
+.Main .details .Ordering::-webkit-scrollbar {
+    display: none;
+}
+
+.Main.active {
+    width: calc(100% - 300px);
+    left: 290px;
+}
+
+
+@media only screen and (max-width: 1005px) {
+
+    .Main {
+        .orderCnts{
+            grid-template-columns: none;
+        }
+        .Ordering table tr td,
+        .Ordering .detailHeader {
+            // display: table-row;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            flex-direction: column;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .Main .details {
+        grid-template-columns: none;
+        // grid-template-rows: 1fr 1fr; // 2:1
+    }
+}
